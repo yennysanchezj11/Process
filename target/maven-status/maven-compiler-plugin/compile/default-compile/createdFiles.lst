@@ -1,0 +1,7 @@
+com\uptc\models\Process.class
+com\uptc\models\States.class
+com\uptc\Main.class
+com\uptc\models\Register.class
+com\uptc\controller\ExecuteProcess.class
+com\uptc\reports\Report.class
+com\uptc\reports\Report$1.class
