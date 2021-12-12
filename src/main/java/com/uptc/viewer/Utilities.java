@@ -1,4 +1,4 @@
-package com.uptc.prg2.CovidRegister.viewer.utilities;
+package com.uptc.viewer;
 
 import java.awt.Color;
 import java.awt.Component;

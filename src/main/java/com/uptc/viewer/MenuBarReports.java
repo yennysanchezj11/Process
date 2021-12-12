@@ -1,28 +1,20 @@
 package com.uptc.viewer;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.plaf.DimensionUIResource;
-
-import controller.Commands;
-import view.constants.ConstantsWindow;
-import view.utilities.Utilities;
+import com.uptc.controller.Commands;
 
 public class MenuBarReports extends JMenuBar {
 
 	private static final long serialVersionUID = 1L;
 
 	private JMenu report;
-	private JMenuItem report1, report2, report3, report4, report5, report6, report7,
-			report8, report9, report10;
-	private JButton addButton, deleteButton;
+	private JMenuItem report1, report2, report3, report4, report5, report6, report7;
 
 	public MenuBarReports(ActionListener actionListener) {
 		this.setLayout(new FlowLayout(FlowLayout.CENTER, 210, 15));
@@ -31,22 +23,6 @@ public class MenuBarReports extends JMenuBar {
 	}
 
 	private void initComponents(ActionListener actionListener) {
-		
-		addButton = new JButton();
-		addButton.setBorder(null);
-		addButton.setFont(Constants.FONT_MENUBAR);
-		addButton.setBackground(Constants.COLOR_MENUBAR);
-		addButton.addActionListener(actionListener);
-		addButton.setActionCommand(Commands.C_ADD_REGISTER.toString());
-		this.add(Utilities.button(addButton, new Dimension(400, 60), Constants.TOP_PANEL_ADD_REGISTER_BUTTON));
-		
-		deleteButton = new JButton();
-		deleteButton.setBorder(null);
-		deleteButton.setFont(Constants.FONT_MENUBAR);
-		deleteButton.setBackground(Constants.COLOR_MENUBAR);
-		deleteButton.addActionListener(actionListener);
-		deleteButton.setActionCommand(Commands.C_DELETE_REGISTER.toString());
-		this.add(Utilities.button(deleteButton, 400, 60, Constants.TOP_PANEL_DELETE_REGISTER_BUTTON));
 
 		report = new JMenu(Constants.TOP_PANEL_MENU_PRINCIPAL_REPORT);
 		report.setFont(Constants.FONT_MENUBAR);
@@ -107,28 +83,5 @@ public class MenuBarReports extends JMenuBar {
 		report.add(report7);
 		this.add(report);
 		report.addSeparator();
-
-		report8 = new JMenuItem(Constants.TOP_T_MENUITEM_REPORT8);
-		report8.setFont(Constants.FONT_MENUBAR);
-		report8.addActionListener(actionListener);
-		report8.setActionCommand(Commands.C_REPORT8.toString());
-		report.add(report8);
-		this.add(report);
-		report.addSeparator();
-
-		report9 = new JMenuItem(Constants.TOP_T_MENUITEM_REPORT9);
-		report9.setFont(Constants.FONT_MENUBAR);
-		report9.addActionListener(actionListener);
-		report9.setActionCommand(Commands.C_REPORT9.toString());
-		report.add(report9);
-		this.add(report);
-		report.addSeparator();
-
-		report10 = new JMenuItem(Constants.TOP_T_MENUITEM_REPORT10);
-		report10.setFont(Constants.FONT_MENUBAR);
-		report10.addActionListener(actionListener);
-		report10.setActionCommand(Commands.C_REPORT10.toString());
-		report.add(report10);
-		this.add(report);
 	}
 }

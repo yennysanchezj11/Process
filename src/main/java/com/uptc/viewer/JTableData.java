@@ -35,9 +35,7 @@ public class JTableData extends JPanel {
 	}
 
 	private void initComponents() {
-		String[] headers = { "ID","FECHA CONSULTA", "CAUSA EXTERNA", "EDAD(AÑOS)", "SEXO", "DESCRIPCION", "ESPECIALIDAD",
-				"NOMBRE DIAGNOSTICO", "TIPO DIAGNOSTICO", "RESPONSABLE DE PAGO", "TIPO DE CONTRATO", "DEPARTAMENTO",
-				"CIUDAD", "ESTADO CIVIL", "NIVEL EDUCATIVO" };
+		String[] headers = { "NOMBRE","TIEMPO DEL PROCESO", "BLOQUEO", "EDITAR", "ELIMINAR"};
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(Color.decode("#30373D"));
 		dtmElements = new DefaultTableModel();

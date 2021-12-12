@@ -1,0 +1,63 @@
+package com.uptc.viewer;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+
+import java.awt.FlowLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+
+public class HeaderProcess extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	
+	private JTextField CPUTime, processTime, nameProcess;
+	private JLabel tittle;
+	private JPanel tittlePanel, CPUPanel, dataProcess;
+	private JButton saveButton;
+	private JCheckBox blockedProcess;
+	
+	public HeaderProcess() {
+		super();
+		this.tittlePanel = new JPanel();
+		this.CPUPanel = new JPanel();
+		this.dataProcess = new JPanel();
+		this.initComponents();
+	}
+	
+	private void initComponents() {
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
+		tittlePanel.setBackground(Color.WHITE);
+		tittlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		tittle = new JLabel();
+		tittlePanel.add(Utilities.text(tittle, new Font("arial", Font.BOLD, 30), "Process", Color.BLACK));
+		this.add(tittlePanel);
+		
+		CPUPanel.setBackground(Color.WHITE);
+		CPUPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		this.CPUTime= new JTextField();
+		CPUPanel.add(Utilities.textField(CPUTime, new Font("arial", Font.ITALIC, 15), "Ingresa el tiempo maximo de la CPU", Color.GRAY, 150, 70));
+		this.add(CPUPanel);
+		
+		dataProcess.setLayout(new FlowLayout(FlowLayout.LEFT));
+		dataProcess.setBackground(Color.WHITE);
+		nameProcess = new JTextField();
+		dataProcess.add(Utilities.textField(nameProcess, new Font("arial", Font.ITALIC, 15), "Ingresa el nombre del proceso", Color.GRAY, 150, 70));
+		processTime= new JTextField();
+		dataProcess.add(Utilities.textField(processTime, new Font("arial", Font.ITALIC, 15), "Ingresa el tiempo que el proceso requiere", Color.GRAY, 150, 70));
+		blockedProcess = new JCheckBox();
+		blockedProcess.setText("¿El proceso se bloqueara?");
+		dataProcess.add(Utilities.checkBox(blockedProcess, new Font("arial", Font.ITALIC, 15), Color.GRAY, Color.WHITE, false));
+		
+		saveButton = new JButton();
+		dataProcess.add(Utilities.button(saveButton, new Dimension(100, 30), "Add"));
+		this.add(dataProcess);
+	}
+}
