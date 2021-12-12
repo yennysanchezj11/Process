@@ -1,4 +1,4 @@
-package viewer;
+package com.uptc.viewer;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,9 +13,6 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
-import persistanceUtilities.UtilitiesFiles;
-import view.constants.ConstantsWindow;
 
 public class JTableData extends JPanel {
 
@@ -49,12 +46,12 @@ public class JTableData extends JPanel {
 		jtElements.setModel(dtmElements);
 		jtElements.getTableHeader().setResizingAllowed(false);
 		jtElements.getTableHeader().setReorderingAllowed(false);
-		jtElements.getTableHeader().setBackground(ConstantsWindow.DATA_PANEL_HEADERS_TABLE_COLOR);
+		jtElements.getTableHeader().setBackground(Constants.DATA_PANEL_HEADERS_TABLE_COLOR);
 		jtElements.getTableHeader().setPreferredSize(new Dimension(0, 60));
 		jtElements.getTableHeader().setForeground(Color.BLACK);
-		jtElements.getTableHeader().setFont(ConstantsWindow.DATA_PANEL_HEADERS_TABLE_FONT);
+		jtElements.getTableHeader().setFont(Constants.DATA_PANEL_HEADERS_TABLE_FONT);
 		jtElements.setBackground(Color.WHITE);
-		jtElements.setFont(ConstantsWindow.DATA_PANEL_HEADERS_TABLE_FONT);
+		jtElements.setFont(Constants.DATA_PANEL_HEADERS_TABLE_FONT);
 		jtElements.setFillsViewportHeight(true);
 		jtElements.setRowHeight(50);
 		jtElements.setBorder(null);
