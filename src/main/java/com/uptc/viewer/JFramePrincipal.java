@@ -53,12 +53,22 @@ public class JFramePrincipal extends JFrame{
 	public void cleanRowsTable() {
 		centerTable.cleanRowsTable();
 	}
-	
-	public void addElementToTablePrincipalTable(ArrayList<Object[]> datasList) {
-		centerTable.addElementToTable(datasList);
+
+	public ArrayList<Object[]> getInformation(){
+		return centerTable.getProcessInformation();
 	}
 	
-	public static void main(String[] args) {
-		new JFramePrincipal(null);
+	
+	public void addElementToTablePrincipalTable() {
+		centerTable.addElementToTable(getInformation());
+	}
+	
+	public void setInformationProcessTable(){
+		Object[] data={headerProcess.getNameProcess(),headerProcess.getProcessTime(),headerProcess.getBlockedProcess()};
+		centerTable.addElementUniqueToTable(data);
+	}
+
+	public int getTimeCPU() {
+		return headerProcess.setTimeCPU();
 	}
 }

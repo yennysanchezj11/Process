@@ -6,12 +6,15 @@ import java.util.ArrayList;
 
 import com.uptc.models.Process;
 import com.uptc.reports.Report;
+import com.uptc.viewer.JFramePrincipal;
 
 public class ControllerApp implements ActionListener {
     ExecuteProcess executeProcess;
+    JFramePrincipal jPrincipal;
     Report reportClass;
     public ControllerApp(){
         executeProcess = new ExecuteProcess();
+        jPrincipal=new JFramePrincipal(this);
    }
 
     @Override
@@ -61,17 +64,15 @@ public class ControllerApp implements ActionListener {
 
 
     public void addProcessTable(){
-
+        jPrincipal.setInformationProcessTable();
     }
 
     
     public void executeProcess(){
-        //manageview 
         //set time
-        int time=0;
-        ArrayList<Object[]> listProcess = new ArrayList<>();
+        int time=jPrincipal.getTimeCPU();
         //set lista de procesos
-        executeListProcess(time, listProcess);
+        executeListProcess(time, jPrincipal.getInformation());
     }
 
     public void executeListProcess(int time,ArrayList<Object[]> listProcess){
@@ -79,7 +80,9 @@ public class ControllerApp implements ActionListener {
        // listProcess.forEach(x -> executeProcess.addProcessToQueue(new Process( x[0],x[1] ,x[2])));
         for (int i = 0; i < listProcess.size(); i++) {
             Object[] vector=(Object[]) listProcess.get(i);
-            executeProcess.addProcessToQueue(new Process(""+vector[0], Integer.parseInt(""+vector[1]), Boolean.parseBoolean(""+vector[2])));
+            System.out.println("---"+listProcess.get(i)[0]);
+            executeProcess.addProcessToQueue(new Process(""+listProcess.get(i)[0], Integer.parseInt(""+vector[1]), Boolean.parseBoolean(""+vector[2])));
+            
         }
         executeProcess.init(timeCPU);
         executeProcess.reports();

@@ -70,6 +70,10 @@ public class JTableData extends JPanel {
 		}
 	}
 
+	public void addElementUniqueToTable(Object[] datasList) {
+			dtmElements.addRow(datasList);
+	}
+
 	public void cleanRowsTable() {
 		dtmElements.setNumRows(0);
 	}
@@ -80,5 +84,18 @@ public class JTableData extends JPanel {
 		for (int i = 0; i < dtmElements.getColumnCount(); i++) {
 			jtElements.getColumnModel().getColumn(i).setCellRenderer(centerModel);
 		}
+	}
+
+	public ArrayList<Object[]> getProcessInformation() {
+		ArrayList<Object[]> infoProcess=new ArrayList<>();
+		for (int i = 0; i < dtmElements.getRowCount(); i++) {
+			Object[] row=new Object[3];
+			row[0]=dtmElements.getValueAt(i, 0);
+			row[1]=dtmElements.getValueAt(i, 1);
+			row[2]=dtmElements.getValueAt(i, 2);
+			System.out.println("AQUIIII"+row[0]);
+			infoProcess.add(row);
+		}
+		return infoProcess;
 	}
 }

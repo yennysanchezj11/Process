@@ -24,7 +24,7 @@ public class HeaderProcess extends JPanel {
 	private JTextField CPUTime, processTime, nameProcess;
 	private JLabel tittle;
 	private JPanel tittlePanel, CPUPanel, dataProcess;
-	private JButton saveButton;
+	private JButton saveButton, executeButton;
 	private JCheckBox blockedProcess;
 	
 	public HeaderProcess(ActionListener actionListener) {
@@ -65,5 +65,28 @@ public class HeaderProcess extends JPanel {
 		saveButton.setActionCommand(Commands.C_ADD_PROCESS.toString());
 		dataProcess.add(Utilities.button(saveButton, new Dimension(100, 30), "Add"));
 		this.add(dataProcess);
+
+		executeButton = new JButton();
+		executeButton.addActionListener(actionListener);
+		executeButton.setActionCommand(Commands.C_EXECUTE_PROCESS.toString());
+		dataProcess.add(Utilities.button(executeButton, new Dimension(100, 30), "Execute"));
+		this.add(dataProcess);
 	}
+
+     public String getNameProcess(){
+		 return nameProcess.getText();
+	 }
+
+	 public String getProcessTime(){
+		return processTime.getText();
+	 }
+
+	 public Boolean getBlockedProcess(){
+		return blockedProcess.isSelected();
+	 }
+
+	public int setTimeCPU() {
+		return Integer.parseInt(CPUTime.getText());
+	}
+
 }

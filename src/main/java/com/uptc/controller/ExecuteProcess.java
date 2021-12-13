@@ -30,6 +30,8 @@ public class ExecuteProcess {
     public void addProcessToQueue(Process p) {
         this.processes.add(p);
         this.allProcess.add(p);
+        System.out.println("PROCESOS EN LA LISTA"+ this.processes.size());
+        System.out.println("PROCESOS EN LA LISTA 2"+ this.allProcess.size());
         totalTime += p.getTime();
         p.states(0, 0, READY, INIT);
     }
@@ -43,6 +45,7 @@ public class ExecuteProcess {
     }
 
     private void attendProcessCPU(Process p) {
+        System.out.println("ATENDIENDO PROCESO"+ p.getName());
         if (p.getTime() > timeCPU) { // 500 - 100
             p.setTime(timeCPU);
             p.states(timeProcess, timeProcess += timeCPU, EXECUTE, READY);
