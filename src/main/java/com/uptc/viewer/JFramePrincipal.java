@@ -23,7 +23,7 @@ public class JFramePrincipal extends JFrame{
 		super("Process");
 		this.sizeRecover();
 		this.jPanelPrincipal = new JPanel();
-		this.headerProcess = new HeaderProcess();
+		this.headerProcess = new HeaderProcess(actionListener);
 		this.centerTable = new JTableData();
 		this.menuBarr = new MenuBarReports(actionListener);
 		this.initComponents(actionListener);
