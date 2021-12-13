@@ -4,10 +4,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 
+import java.awt.event.ActionListener;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
+
+import com.uptc.controller.Commands;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,15 +27,15 @@ public class HeaderProcess extends JPanel {
 	private JButton saveButton;
 	private JCheckBox blockedProcess;
 	
-	public HeaderProcess() {
+	public HeaderProcess(ActionListener actionListener) {
 		super();
 		this.tittlePanel = new JPanel();
 		this.CPUPanel = new JPanel();
 		this.dataProcess = new JPanel();
-		this.initComponents();
+		this.initComponents(actionListener);
 	}
 	
-	private void initComponents() {
+	private void initComponents(ActionListener actionListener) {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		tittlePanel.setBackground(Color.WHITE);
@@ -57,6 +61,8 @@ public class HeaderProcess extends JPanel {
 		dataProcess.add(Utilities.checkBox(blockedProcess, new Font("arial", Font.ITALIC, 15), Color.GRAY, Color.WHITE, false));
 		
 		saveButton = new JButton();
+		saveButton.addActionListener(actionListener);
+		saveButton.setActionCommand(Commands.C_ADD_PROCESS.toString());
 		dataProcess.add(Utilities.button(saveButton, new Dimension(100, 30), "Add"));
 		this.add(dataProcess);
 	}

@@ -17,6 +17,7 @@ public class JFramePrincipal extends JFrame{
 	private JPanel jPanelPrincipal;
 	private HeaderProcess headerProcess;
 	private JTableData centerTable;
+	private MenuBarReports menuBarr;
 	
 	public JFramePrincipal(ActionListener actionListener) {
 		super("Process");
@@ -24,6 +25,7 @@ public class JFramePrincipal extends JFrame{
 		this.jPanelPrincipal = new JPanel();
 		this.headerProcess = new HeaderProcess();
 		this.centerTable = new JTableData();
+		this.menuBarr = new MenuBarReports(actionListener);
 		this.initComponents(actionListener);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -39,14 +41,13 @@ public class JFramePrincipal extends JFrame{
 		jPanelPrincipal.setBackground(Color.WHITE);
 		jPanelPrincipal.setLayout(new BorderLayout());
 		jPanelPrincipal.add(headerProcess, BorderLayout.NORTH);
-		this.add(jPanelPrincipal);
+		
 
 		jPanelPrincipal.add(centerTable, BorderLayout.CENTER);
 
-//		footerPanel = new FooterPanel();
-//		jPanelPrincipal.add(footerPanel, BorderLayout.SOUTH);
-
+		jPanelPrincipal.add(menuBarr, BorderLayout.SOUTH);
 		
+		this.add(jPanelPrincipal);
 	}
 	
 	public void cleanRowsTable() {
