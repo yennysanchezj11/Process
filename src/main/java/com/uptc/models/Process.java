@@ -50,26 +50,24 @@ public class Process {
         return name;
     }
 
-    public String getTableByState(int totalTime, int timeCPU) {
-        StringBuilder exit = new StringBuilder(name + ": ");
-        for (int i = 0; i <= totalTime; i += timeCPU) {
+    public String[] getTableByState(int totalTime, int timeCPU) {
+        String aux[] = {};
+        aux[0]=name;
+        for (int i = 1; i <= totalTime; i += timeCPU) {
             String status = getLastByState(i, timeCPU);
-            exit.append("| ").append(status);
-            exit.append(" ".repeat(4 - status.length()));
+            aux[i] = status;
         }
-        return exit.toString();
+       return aux;
     }
 
-    public String getTableByTime(int totalTime, int timeCPU) {
-        StringBuilder exit = new StringBuilder(name + ": ");
-        int aux = 0;
-        for (int i = 0; i <= totalTime; i += timeCPU) {
+    public Object[] getTableByTime(int totalTime, int timeCPU) {
+        Object aux[] = {};
+        aux[0]=name;
+        for (int i = 1; i <= totalTime; i += timeCPU) {
             int lastTime = getLastByTime(i, timeCPU);
-            aux = lastTime!=-1 ? lastTime : aux;
-            exit.append("| ").append(aux);
-            exit.append(" ".repeat(4 - String.valueOf(aux).length()));
+            aux[i] = lastTime!=-1 ? lastTime : 0;
         }
-        return exit.toString();
+        return aux;
     }
 
     private int getLastByTime(int initKey, int timeCPU) {

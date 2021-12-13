@@ -5,7 +5,7 @@ import com.uptc.reports.Report;
 
 import static com.uptc.models.States.*;
 
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -18,6 +18,7 @@ public class ExecuteProcess {
     private int timeProcess;   // cambia --
     private int timeCPU;       // lo que atiende la cpu
     private int totalTime;     // total de atencion de los procesos
+    private Report report;
 
     public ExecuteProcess() {
         this.processes = new LinkedList<>();
@@ -61,9 +62,38 @@ public class ExecuteProcess {
         }
     }
 
-    public void reports(PrintWriter printWriter) {
-        Report report = new Report(allProcess, totalTime, timeCPU, printWriter);
+    public void reports() {
+        report = new Report(allProcess, totalTime, timeCPU);
         report.init();
     }
 
+    public ArrayList<Object[]> reportMissingTimeProcess(){
+        return report.getReportMissingTimeProcess();
+    }
+
+    public ArrayList<String[]> reportStatusChangeProcess() {
+        return report.getReportForStatusChangeProcess();
+    }
+
+    public ArrayList<String[]> reportByReadyStates(){
+        return report.getReportByReadyStates();
+    }
+
+    public ArrayList<String[]> reportByExitState(){
+        return report.getReportByExitState();
+    }
+
+    public ArrayList<String[]> reportByLockedStates(){
+        return report.getReportByLockedStates();
+    }
+
+    public ArrayList<Object[]> reportForStatusChange(){
+        return report.getReportForStatusChange();
+    }
+
+    public ArrayList<String[]> reportByCpuExecuteOrder() {
+        return report.reportByCpuExecuteOrder();
+    }
+
+   
 }
