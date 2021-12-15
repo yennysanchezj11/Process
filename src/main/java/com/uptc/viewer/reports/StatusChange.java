@@ -31,7 +31,6 @@ public class StatusChange extends JDialog {
 		this.getContentPane().setBackground(Color.WHITE);
 		this.setLocationRelativeTo(jFramePrincipal);
 		this.addComponentsCenter(actionListener);
-		this.setVisible(true);
 	}
 
 	private void addComponentsCenter(ActionListener actionListener) {

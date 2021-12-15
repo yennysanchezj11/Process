@@ -23,6 +23,7 @@ public class ControllerApp implements ActionListener {
             case C_ADD_PROCESS:
                //agregar proceso a la tabla de procesos
                addProcessTable();
+               
              break;
             case C_EXECUTE_PROCESS:
                //Ejecutar lista de procesos
@@ -31,30 +32,37 @@ public class ControllerApp implements ActionListener {
             case C_REPORT_MISSING_TIME_PER_PROCESS:
                 //reporte por tiempo faltante por proceso
                 reportMissingTimeProcess();
+                jPrincipal.dialogVisibilitiReportMissingTimePerProcess(true);
             break;
             case C_REPORT_FOR_STATUS_CHANGE_PROCESS:
                 //reporte por cambio de estado de los procesos
                 reportStatusChangeProcess();
+                jPrincipal.dialogVisibilitiStatusChangeProcess(true);
             break;
             case C_REPORT_BY_READY_STATES:
                 //reporte por orden en el estado en listo
                 reportByReadyStates();
+                jPrincipal.dialogVisibilitiReadyState(true);
             break;
             case C_REPORT_BY_EXECUTE_STATES:
                 //reporte por orden en el estado de en ejecución
                 reportByCpuExecuteOrder();
+                jPrincipal.dialogVisibilitiExecuteState(true);
             break;
             case C_REPORT_BY_LOCKED_STATES:
                 //reporte por orden en el estado en bloqueo
                 reportByLockedStates();
+                jPrincipal.dialogVisibilitiLockedState(true);
             break;
             case C_REPORT_BY_EXIT_STATE:
                 //reporte por orden en el estado en salida
                 reportByExitState();
+                jPrincipal.dialogVisibilitiExitState(true);
             break;
             case C_REPORT_FOR_STATUS_CHANGE:
                 //reporte por cambios de estado de cada proceso
                 reportForStatusChange();
+                jPrincipal.dialogVisibilitiStatusChange(true);
             break;
 
                 default:
