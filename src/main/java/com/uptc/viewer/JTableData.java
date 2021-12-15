@@ -18,6 +18,7 @@ public class JTableData extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private DefaultTableModel dtmElements;
+	private String[] headers;
 
 	public DefaultTableModel getDtmElements() {
 		return dtmElements;
@@ -30,12 +31,12 @@ public class JTableData extends JPanel {
 	private JTable jtElements;
 	private JScrollPane jsTable;
 
-	public JTableData() {
+	public JTableData(String[] headers) {
+		this.headers = headers;
 		initComponents();
 	}
 
 	private void initComponents() {
-		String[] headers = { "NOMBRE","TIEMPO DEL PROCESO", "BLOQUEO", "EDITAR", "ELIMINAR"};
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(Color.decode("#30373D"));
 		dtmElements = new DefaultTableModel();

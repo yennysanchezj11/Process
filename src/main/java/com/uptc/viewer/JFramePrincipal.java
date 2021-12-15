@@ -18,13 +18,14 @@ public class JFramePrincipal extends JFrame{
 	private HeaderProcess headerProcess;
 	private JTableData centerTable;
 	private MenuBarReports menuBarr;
+	String [] headers = {"Nombre del proceso", "Tiempo del proceso", "Bloqueado", "Editar", "Eliminar"};
 	
 	public JFramePrincipal(ActionListener actionListener) {
 		super("Process");
 		this.sizeRecover();
 		this.jPanelPrincipal = new JPanel();
 		this.headerProcess = new HeaderProcess(actionListener);
-		this.centerTable = new JTableData();
+		this.centerTable = new JTableData(headers);
 		this.menuBarr = new MenuBarReports(actionListener);
 		this.initComponents(actionListener);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
