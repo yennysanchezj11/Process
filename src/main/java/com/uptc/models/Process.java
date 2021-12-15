@@ -23,15 +23,17 @@ public class Process {
     }
 
     public void states(int timeI, int timeF, States status, States previous) {
-        //this.registers.add(new Register(timeI,timeF,status,this.time,this));
+        // this.registers.add(new Register(timeI,timeF,status,this.time,this));
         Register r = new Register(timeI, timeF, status, this.time, this, previous);
         addRegister(timeI, r);
         addRegister(timeF, r);
     }
 
     private void addRegister(int time, Register status) {
-        if (!register.containsKey(time)) register.put(time, new ArrayList<>());
-        if (!register.get(time).contains(status)) register.get(time).add(status);
+        if (!register.containsKey(time))
+            register.put(time, new ArrayList<>());
+        if (!register.get(time).contains(status))
+            register.get(time).add(status);
     }
 
     public int getTime() {
@@ -50,24 +52,26 @@ public class Process {
         return name;
     }
 
-    public String[] getTableByState(int totalTime, int timeCPU) {
-        String aux[] = {};
-        aux[0]=name;
-        for (int i = 1; i <= totalTime; i += timeCPU) {
+    public String getTableByState(int totalTime, int timeCPU) {
+        StringBuilder exit = new StringBuilder(name + ": ");
+        for (int i = 0; i <= totalTime; i += timeCPU) {
             String status = getLastByState(i, timeCPU);
-            aux[i] = status;
+            exit.append("| ").append(status);
+            exit.append(" ".repeat(4 - status.length()));
         }
-       return aux;
+        return exit.toString();
     }
 
-    public Object[] getTableByTime(int totalTime, int timeCPU) {
-        Object aux[] = {};
-        aux[0]=name;
-        for (int i = 1; i <= totalTime; i += timeCPU) {
+    public String getTableByTime(int totalTime, int timeCPU) {
+        StringBuilder exit = new StringBuilder(name + ": ");
+        int aux = 0;
+        for (int i = 0; i <= totalTime; i += timeCPU) {
             int lastTime = getLastByTime(i, timeCPU);
-            aux[i] = lastTime!=-1 ? lastTime : 0;
+            aux = lastTime != -1 ? lastTime : aux;
+            exit.append("| ").append(aux);
+            exit.append(" ".repeat(4 - String.valueOf(aux).length()));
         }
-        return aux;
+        return exit.toString();
     }
 
     private int getLastByTime(int initKey, int timeCPU) {
@@ -77,7 +81,8 @@ public class Process {
                     .stream().filter(x -> x.timeEnd == key)
                     .map(x -> x.actualTime)
                     .findFirst();
-            if (actualTime.isPresent()) return actualTime.get();
+            if (actualTime.isPresent())
+                return actualTime.get();
         }
         return -1;
     }
@@ -86,15 +91,15 @@ public class Process {
         StringBuilder status = new StringBuilder();
         for (int i = initKey; i > initKey - timeCPU; i--) {
             register.getOrDefault(i, List.of())
-                    .stream().map(x-> x.status.toString())
+                    .stream().map(x -> x.status.toString())
                     .forEach(status::append);
         }
         return status.toString();
     }
 
-    public List<Register> getAllRegisters(){
+    public List<Register> getAllRegisters() {
         List<Register> registers = new ArrayList<>();
-        register.forEach((k,v)-> registers.addAll(v));
+        register.forEach((k, v) -> registers.addAll(v));
         return registers;
     }
 }

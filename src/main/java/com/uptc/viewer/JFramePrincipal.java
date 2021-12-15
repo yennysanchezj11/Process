@@ -16,7 +16,7 @@ import com.uptc.viewer.reports.ReadyState;
 import com.uptc.viewer.reports.StatusChageProcess;
 import com.uptc.viewer.reports.StatusChange;
 
-public class JFramePrincipal extends JFrame{
+public class JFramePrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
@@ -31,12 +31,12 @@ public class JFramePrincipal extends JFrame{
 	private ExitState exitState;
 	private ReadyState readyState;
 	private LockedState lockedState;
-	
-	String [] headers = {"Nombre del proceso", "Tiempo del proceso", "Bloqueado", "Editar", "Eliminar"};
-	
+
+	String[] headers = { "Nombre del proceso", "Tiempo del proceso", "Bloqueado" };
+
 	public JFramePrincipal(ActionListener actionListener) {
 		super("Process");
-		this.setSize(900,600);
+		this.setSize(900, 600);
 		this.jPanelPrincipal = new JPanel();
 		this.headerProcess = new HeaderProcess(actionListener);
 		this.centerTable = new JTableData(headers);
@@ -52,66 +52,65 @@ public class JFramePrincipal extends JFrame{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
-	
-	
+
 	private void initComponents(ActionListener actionListener) {
 		jPanelPrincipal.setBackground(Color.WHITE);
 		jPanelPrincipal.setLayout(new BorderLayout());
 		jPanelPrincipal.add(headerProcess, BorderLayout.NORTH);
-		
+
 		jPanelPrincipal.add(centerTable, BorderLayout.CENTER);
 
 		jPanelPrincipal.add(menuBarr, BorderLayout.SOUTH);
-		
+
 		this.add(jPanelPrincipal);
 	}
-	
+
 	public void cleanRowsTable() {
 		centerTable.cleanRowsTable();
 	}
 
-	public ArrayList<Object[]> getInformation(){
+	public ArrayList<Object[]> getInformation() {
 		return centerTable.getProcessInformation();
 	}
-	
-	
+
 	public void addElementToTablePrincipalTable() {
 		centerTable.addElementToTable(getInformation());
 	}
-	
-	public void setInformationProcessTable(){
-		Object[] data={headerProcess.getNameProcess(),headerProcess.getProcessTime(),headerProcess.getBlockedProcess()};
+
+	public void setInformationProcessTable() {
+		Object[] data = { headerProcess.getNameProcess(), headerProcess.getProcessTime(),
+				headerProcess.getBlockedProcess() };
 		centerTable.addElementUniqueToTable(data);
 	}
 
 	public int getTimeCPU() {
 		return headerProcess.setTimeCPU();
 	}
-	
+
 	public void dialogVisibilitiReportMissingTimePerProcess(boolean visibility) {
 		missingTimePerProcess.setVisible(visibility);
 	}
-	
+
 	public void dialogVisibilitiStatusChangeProcess(boolean visibility) {
 		statusChageProcess.setVisible(visibility);
 	}
-	
+
 	public void dialogVisibilitiStatusChange(boolean visibility) {
 		statusChange.setVisible(visibility);
 	}
-	
+
 	public void dialogVisibilitiExecuteState(boolean visibility) {
 		executeState.setVisible(visibility);
 	}
-	
+
 	public void dialogVisibilitiExitState(boolean visibility) {
 		exitState.setVisible(visibility);
 	}
-	
+
 	public void dialogVisibilitiLockedState(boolean visibility) {
 		lockedState.setVisible(visibility);
 	}
-	
+
 	public void dialogVisibilitiReadyState(boolean visibility) {
 		readyState.setVisible(visibility);
 	}

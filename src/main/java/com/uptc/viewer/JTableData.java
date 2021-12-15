@@ -72,7 +72,7 @@ public class JTableData extends JPanel {
 	}
 
 	public void addElementUniqueToTable(Object[] datasList) {
-			dtmElements.addRow(datasList);
+		dtmElements.addRow(datasList);
 	}
 
 	public void cleanRowsTable() {
@@ -88,13 +88,12 @@ public class JTableData extends JPanel {
 	}
 
 	public ArrayList<Object[]> getProcessInformation() {
-		ArrayList<Object[]> infoProcess=new ArrayList<>();
+		ArrayList<Object[]> infoProcess = new ArrayList<>();
 		for (int i = 0; i < dtmElements.getRowCount(); i++) {
-			Object[] row=new Object[3];
-			row[0]=dtmElements.getValueAt(i, 0);
-			row[1]=dtmElements.getValueAt(i, 1);
-			row[2]=dtmElements.getValueAt(i, 2);
-			System.out.println("AQUIIII"+row[0]);
+			Object[] row = new Object[3];
+			row[0] = dtmElements.getValueAt(i, 0);
+			row[1] = dtmElements.getValueAt(i, 1);
+			row[2] = dtmElements.getValueAt(i, 2);
 			infoProcess.add(row);
 		}
 		return infoProcess;

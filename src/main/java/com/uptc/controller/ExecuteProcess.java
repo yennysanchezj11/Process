@@ -5,6 +5,7 @@ import com.uptc.reports.Report;
 
 import static com.uptc.models.States.*;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,9 +16,9 @@ public class ExecuteProcess {
     private final Queue<Process> processes;
     private final List<Process> allProcess;
 
-    private int timeProcess;   // cambia --
-    private int timeCPU;       // lo que atiende la cpu
-    private int totalTime;     // total de atencion de los procesos
+    private int timeProcess; // cambia --
+    private int timeCPU; // lo que atiende la cpu
+    private int totalTime; // total de atencion de los procesos
     private Report report;
 
     public ExecuteProcess() {
@@ -30,8 +31,6 @@ public class ExecuteProcess {
     public void addProcessToQueue(Process p) {
         this.processes.add(p);
         this.allProcess.add(p);
-        System.out.println("PROCESOS EN LA LISTA"+ this.processes.size());
-        System.out.println("PROCESOS EN LA LISTA 2"+ this.allProcess.size());
         totalTime += p.getTime();
         p.states(0, 0, READY, INIT);
     }
@@ -45,7 +44,7 @@ public class ExecuteProcess {
     }
 
     private void attendProcessCPU(Process p) {
-        System.out.println("ATENDIENDO PROCESO"+ p.getName());
+        System.out.println("ATENDIENDO PROCESO" + p.getName());
         if (p.getTime() > timeCPU) { // 500 - 100
             p.setTime(timeCPU);
             p.states(timeProcess, timeProcess += timeCPU, EXECUTE, READY);
@@ -57,7 +56,7 @@ public class ExecuteProcess {
             }
 
             processes.add(p);
-        } else {   // 50 100
+        } else { // 50 100
             int timePi = p.getTime();
             p.setTime(timePi);
             p.states(timeProcess, timeProcess += timePi, EXECUTE, READY);
@@ -65,38 +64,41 @@ public class ExecuteProcess {
         }
     }
 
-    public void reports() {
-        report = new Report(allProcess, totalTime, timeCPU);
+    public void reports(PrintWriter printWriter) {
+        report = new Report(allProcess, totalTime, timeCPU, printWriter);
         report.init();
     }
 
-    public ArrayList<Object[]> reportMissingTimeProcess(){
-        return report.getReportMissingTimeProcess();
+    /*
+     * public void reportMissingTimeProcess() {
+     * report.getReportMissingTimeProcess();
+     * }
+     * 
+     * public void reportStatusChangeProcess() {
+     * report.getReportForStatusChangeProcess();
+     * }
+     * 
+     * public void reportByStates() {
+     * report.getReportByStates();
+     * }
+     * 
+     * public ArrayList<String[]> reportByExitState() {
+     * return report.getReportByExitState();
+     * }
+     * 
+     * public ArrayList<String[]> reportByLockedStates() {
+     * return report.getReportByLockedStates();
+     * }
+     */
+
+    public void reportForStatusChange() {
+        report.getReportTotalProcess();
     }
 
-    public ArrayList<String[]> reportStatusChangeProcess() {
-        return report.getReportForStatusChangeProcess();
-    }
+    /*
+     * public void reportByCpuExecuteOrder() {
+     * report.getReportByCpuExecuteOrder();
+     * }
+     */
 
-    public ArrayList<String[]> reportByReadyStates(){
-        return report.getReportByReadyStates();
-    }
-
-    public ArrayList<String[]> reportByExitState(){
-        return report.getReportByExitState();
-    }
-
-    public ArrayList<String[]> reportByLockedStates(){
-        return report.getReportByLockedStates();
-    }
-
-    public ArrayList<Object[]> reportForStatusChange(){
-        return report.getReportForStatusChange();
-    }
-
-    public ArrayList<String[]> reportByCpuExecuteOrder() {
-        return report.reportByCpuExecuteOrder();
-    }
-
-   
 }

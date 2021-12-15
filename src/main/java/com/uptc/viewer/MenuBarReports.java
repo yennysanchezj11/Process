@@ -17,7 +17,7 @@ public class MenuBarReports extends JMenuBar {
 
 	private JMenu report;
 	private JMenuItem report1, report2, report3, report4, report5, report6, report7;
-	private JButton executeButton;
+	private JButton executeButton, reportButton;
 
 	public MenuBarReports(ActionListener actionListener) {
 		this.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -25,15 +25,19 @@ public class MenuBarReports extends JMenuBar {
 		this.initComponents(actionListener);
 		this.setVisible(true);
 	}
-	
 
 	private void initComponents(ActionListener actionListener) {
-		
+
 		executeButton = new JButton();
 		executeButton.addActionListener(actionListener);
 		executeButton.setActionCommand(Commands.C_EXECUTE_PROCESS.toString());
 		this.add(Utilities.button(executeButton, new Dimension(100, 30), "Execute"));
-		
+
+		reportButton = new JButton();
+		reportButton.addActionListener(actionListener);
+		reportButton.setActionCommand(Commands.C_REPORTS_VIEW.toString());
+		this.add(Utilities.button(reportButton, new Dimension(100, 30), "Reports"));
+
 		report = new JMenu(Constants.TOP_PANEL_MENU_PRINCIPAL_REPORT);
 		report.setFont(Constants.FONT_MENUBAR);
 		report.setForeground(Color.BLACK);
@@ -55,29 +59,8 @@ public class MenuBarReports extends JMenuBar {
 		report3 = new JMenuItem(Constants.TOP_T_MENUITEM_REPORT3);
 		report3.setFont(Constants.FONT_MENUBAR);
 		report3.addActionListener(actionListener);
-		report3.setActionCommand(Commands.C_REPORT_BY_EXIT_STATE.toString());
+		report3.setActionCommand(Commands.C_REPORT_BY_STATES.toString());
 		report.add(report3);
-		report.addSeparator();
-
-		report4 = new JMenuItem(Constants.TOP_T_MENUITEM_REPORT4);
-		report4.setFont(Constants.FONT_MENUBAR);
-		report4.addActionListener(actionListener);
-		report4.setActionCommand(Commands.C_REPORT_BY_READY_STATES.toString());
-		report.add(report4);
-		report.addSeparator();
-
-		report5 = new JMenuItem(Constants.TOP_T_MENUITEM_REPORT5);
-		report5.setFont(Constants.FONT_MENUBAR);
-		report5.addActionListener(actionListener);
-		report5.setActionCommand(Commands.C_REPORT_BY_EXECUTE_STATES.toString());
-		report.add(report5);
-		report.addSeparator();
-
-		report6 = new JMenuItem(Constants.TOP_T_MENUITEM_REPORT6);
-		report6.setFont(Constants.FONT_MENUBAR);
-		report6.addActionListener(actionListener);
-		report6.setActionCommand(Commands.C_REPORT_BY_LOCKED_STATES.toString());
-		report.add(report6);
 		report.addSeparator();
 
 		report7 = new JMenuItem(Constants.TOP_T_MENUITEM_REPORT7);
@@ -86,7 +69,7 @@ public class MenuBarReports extends JMenuBar {
 		report7.setActionCommand(Commands.C_REPORT_FOR_STATUS_CHANGE.toString());
 		report.add(report7);
 		report.addSeparator();
-		
-		this.add(report);
+
+		// this.add(report);
 	}
 }
