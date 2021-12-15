@@ -1,14 +1,12 @@
 package com.uptc.viewer;
 
 import java.awt.BorderLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class JFramePrincipal extends JFrame{
 
@@ -22,7 +20,7 @@ public class JFramePrincipal extends JFrame{
 	
 	public JFramePrincipal(ActionListener actionListener) {
 		super("Process");
-		this.sizeRecover();
+		this.setSize(900,600);
 		this.jPanelPrincipal = new JPanel();
 		this.headerProcess = new HeaderProcess(actionListener);
 		this.centerTable = new JTableData(headers);
@@ -32,18 +30,12 @@ public class JFramePrincipal extends JFrame{
 		this.setVisible(true);
 	}
 	
-	public void sizeRecover() {
-		Toolkit jFrameWindow = Toolkit.getDefaultToolkit();
-		Dimension screenSize = jFrameWindow.getScreenSize();
-		this.setSize(screenSize);
-	}
 	
 	private void initComponents(ActionListener actionListener) {
 		jPanelPrincipal.setBackground(Color.WHITE);
 		jPanelPrincipal.setLayout(new BorderLayout());
 		jPanelPrincipal.add(headerProcess, BorderLayout.NORTH);
 		
-
 		jPanelPrincipal.add(centerTable, BorderLayout.CENTER);
 
 		jPanelPrincipal.add(menuBarr, BorderLayout.SOUTH);

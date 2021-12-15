@@ -60,9 +60,4 @@ public class MissingTimePerProcess extends JDialog {
 		centerPanel.setVisible(true);
 		return centerPanel;
 	}
-
-	public static void main(String[] args) {
-		new MissingTimePerProcess(null, null);
-	}
-
 }

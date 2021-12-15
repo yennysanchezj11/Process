@@ -1,21 +1,19 @@
 package com.uptc.viewer;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-
-import java.awt.event.ActionListener;
-import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
 
 import com.uptc.controller.Commands;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
 
 public class HeaderProcess extends JPanel {
 
@@ -24,7 +22,7 @@ public class HeaderProcess extends JPanel {
 	private JTextField CPUTime, processTime, nameProcess;
 	private JLabel tittle;
 	private JPanel tittlePanel, CPUPanel, dataProcess;
-	private JButton saveButton, executeButton;
+	private JButton saveButton;
 	private JCheckBox blockedProcess;
 	
 	public HeaderProcess(ActionListener actionListener) {
@@ -64,12 +62,6 @@ public class HeaderProcess extends JPanel {
 		saveButton.addActionListener(actionListener);
 		saveButton.setActionCommand(Commands.C_ADD_PROCESS.toString());
 		dataProcess.add(Utilities.button(saveButton, new Dimension(100, 30), "Add"));
-		this.add(dataProcess);
-
-		executeButton = new JButton();
-		executeButton.addActionListener(actionListener);
-		executeButton.setActionCommand(Commands.C_EXECUTE_PROCESS.toString());
-		dataProcess.add(Utilities.button(executeButton, new Dimension(100, 30), "Execute"));
 		this.add(dataProcess);
 	}
 
